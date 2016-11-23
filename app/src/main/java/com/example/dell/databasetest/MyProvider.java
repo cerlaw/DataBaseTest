@@ -8,14 +8,13 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.CancellationSignal;
 import android.support.annotation.Nullable;
 
 /**
  * Created by DELL on 2016/11/19.
  */
 
-public abstract class MyProvider extends ContentProvider {
+public class MyProvider extends ContentProvider {
 
     public static final int BOOK_DIR = 0;
 
@@ -51,7 +50,7 @@ public abstract class MyProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder, CancellationSignal cancellationSignal) {
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = null;
         switch (uriMatcher.match(uri)){
